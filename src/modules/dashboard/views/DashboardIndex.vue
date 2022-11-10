@@ -1,4 +1,7 @@
 <template>
+  <div>
+    indexxxxxxxxgg
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -11,7 +14,6 @@ const productStore =  useProductStore()
 const categoryStore =  useCategoryStore()
 
 const router = useRouter();
-console.log('TEST:::::::',import.meta.url)
 
 onBeforeMount(async ()=>{
   await productStore.fetchProducts();

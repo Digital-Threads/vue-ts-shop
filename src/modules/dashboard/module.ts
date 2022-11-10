@@ -14,6 +14,18 @@ const module: Module = {
         },
       ],
     },
+    {
+      path: "/home",
+      component: () => import("@/modules/dashboard/views/Home.vue"),
+      children: [
+        {
+          name: "home",
+          path: "",
+          component: () =>
+            import("@/modules/dashboard/views/HomeIndex.vue"),
+        },
+      ],
+    },
   ],
 };
 
