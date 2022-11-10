@@ -8,13 +8,15 @@
        <img src="../../assets/shoes.png" alt="shoesLogo">
       </router-link>
       <router-link
+      active-class="text-blue-500"
         to="/home"
         class="text-white hover:text-blue-500 duration-200"
       >
         Home
       </router-link>
       <router-link
-        to="/home"
+      active-class="text-blue-500"
+        to="/products"
         class="text-white hover:text-blue-500 duration-200"
       >
         Products
@@ -22,13 +24,8 @@
     </div>
     <div class="flex items-center gap-6">
       <router-link
-        to="/home"
-        class="text-white hover:text-blue-500 duration-200"
-      >
-        Profile
-      </router-link>
-      <router-link
-        to="/home"
+      active-class="bg-blue-800"
+        to="/basket"
         class="text-white hover:text-blue-500 duration-200 bg-blue-500 py-2 px-4 rounded transform hover:scale-105 hover:bg-blue-800"
       >
       <img src="../../assets/card.png" alt="card" class="w-6 h-6">
