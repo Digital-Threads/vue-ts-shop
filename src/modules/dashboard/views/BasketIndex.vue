@@ -44,6 +44,8 @@ import { defineComponent, ref } from "vue";
 import Card from "@/components/cards/Card.vue";
 import DeleteModal from "@/components/modals/DeleteModal.vue";
 
+
+
 defineComponent({
     name: "BasketIndex",
     components: {
