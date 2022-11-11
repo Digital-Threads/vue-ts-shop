@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import {fetchProducts} from "../api/product";
+import {Product} from "../../modules/product/schema/productSchema";
 
 export const useProductStore = defineStore("productStore", {
     state: () => ({
@@ -14,8 +15,9 @@ export const useProductStore = defineStore("productStore", {
     }),
     getters: {},
     actions: {
-        async fetchProducts() {
+        async fetchProducts(): Promise<Product[]> {
             this.productsList = await fetchProducts()
+            return this.productsList
         },
     }
 });

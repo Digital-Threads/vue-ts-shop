@@ -1,4 +1,4 @@
-import type { Module } from "@/lib/modules";
+import type { Module } from "../../lib/modules";
 
 const module: Module = {
   routes: [
@@ -23,42 +23,6 @@ const module: Module = {
           path: "",
           component: () =>
             import("@/modules/dashboard/views/HomeIndex.vue"),
-        },
-      ],
-    },
-    {
-      path: "/products",
-      component: () => import("@/modules/dashboard/views/Products.vue"),
-      children: [
-        {
-          name: "products",
-          path: "",
-          component: () =>
-            import("@/modules/dashboard/views/ProductsIndex.vue"),
-        },
-      ],
-    },
-    {
-      path: "/product",
-      component: () => import("@/modules/dashboard/views/Product.vue"),
-      children: [
-        {
-          name: "product",
-          path: "",
-          component: () =>
-            import("@/modules/dashboard/views/ProductIndex.vue"),
-        },
-      ],
-    },
-    {
-      path: "/basket",
-      component: () => import("@/modules/dashboard/views/Basket.vue"),
-      children: [
-        {
-          name: "basket",
-          path: "",
-          component: () =>
-            import("@/modules/dashboard/views/BasketIndex.vue"),
         },
       ],
     },

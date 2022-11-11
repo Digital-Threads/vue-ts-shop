@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, defineProps } from "vue";
+import { defineComponent } from "vue";
 
 const props = defineProps<{
   image: string;
