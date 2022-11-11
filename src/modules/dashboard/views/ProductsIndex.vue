@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, onBeforeMount } from "vue";
+import { onBeforeMount } from "vue";
 import Hero from "@/components/layouts/Hero.vue";
 import Card from "@/components/cards/Card.vue";
 import LoadMore from "@/components/cards/LoadMore.vue";

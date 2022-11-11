@@ -5,7 +5,7 @@
     <div class="flex gap-6">
       <div v-for="category in categoryStore.categoriesList" :key="category.id">
         <button
-          class="outline-none bg-white text-slate-400 px-10 py-1 border border-slate-400 hover:bg-slate-400 hover:text-white hover:border-transparent  duration-200"
+          class="outline-none bg-white text-slate-400 px-10 py-1 border border-slate-400 hover:bg-slate-400 hover:text-white hover:border-transparent duration-200"
         >
           {{ category.name }}
         </button>
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, onBeforeMount } from "vue";
+import { onBeforeMount } from "vue";
 import Hero from "@/components/layouts/Hero.vue";
 import Card from "@/components/cards/Card.vue";
 import LoadMore from "@/components/cards/LoadMore.vue";
@@ -37,15 +37,6 @@ import { useCategoryStore } from "../../../lib/store/category";
 
 const productStore: any = useProductStore();
 const categoryStore: any = useCategoryStore();
-
-defineComponent({
-  name: "Home",
-  components: {
-    Hero,
-    Card,
-    LoadMore,
-  },
-});
 
 onBeforeMount(async () => {
   await productStore.fetchProducts();
