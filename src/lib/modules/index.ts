@@ -1,6 +1,7 @@
-import { createRouter } from "@/plugins/vue-router";
+import { createRouter } from "../../plugins/vue-router";
 import type { App } from "vue";
 import type { RouteRecordRaw } from "vue-router";
+
 export interface Module {
   routes?: RouteRecordRaw[];
   extend?: (app: App) => void;
