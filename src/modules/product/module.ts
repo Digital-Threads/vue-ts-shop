@@ -13,8 +13,8 @@ const product: Module = {
                         import("@/modules/product/views/ProductsIndex.vue"),
                 },
                 {
-                    path: "/product/:id",
-                    name: "product",
+                    path: "/products/:id",
+                    name: "ProductDetail",
                     component: () => import("@/modules/product/views/ProductIndex.vue"),
                 },
             ],

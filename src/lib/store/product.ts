@@ -15,13 +15,13 @@ interface RootState {
 
 export const useProductStore = defineStore("productStore", {
     state: () => ({
-        selectedProduct: {} as ProductSchema | null,
-        productsList: [] as Array<ProductSchema>,
+        selectedProduct: null,
+        productsList: [],
         productsMeta: {
-            limit: 100 as number,
-            offset: 0 as number,
-            total: 0 as number,
-            count: 0 as number
+            limit: 100 ,
+            offset: 0 ,
+            total: 0 ,
+            count: 0
         }
     } as RootState),
     getters: {
@@ -32,7 +32,7 @@ export const useProductStore = defineStore("productStore", {
             const productsList: ProductsSchema = await fetchProducts()
 
             this.productsList = productsList.items
-            console.log('Product list ::::', this.productsList)
+            console.log('This product List Store::::', this.productsList)
             this.productsMeta.limit = productsList.limit
             this.productsMeta.offset = productsList.offset
             this.productsMeta.total = productsList.total
