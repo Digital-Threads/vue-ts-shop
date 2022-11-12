@@ -1,18 +1,13 @@
-import { getAxiosInstance } from "../index";
+import {getAxiosInstance} from "../index";
+import {ProductSchema, ProductsSchema} from "./schemas";
 
-export interface ProductSchemaRequest{
-  id: number;
-  slug: string;
-}
 
-// export const fetchProducts = async (): Promise<ProductSchema> => {
-export const fetchProducts = async () => {
-  const { data } = await getAxiosInstance().get("products");
-  console.log("DATA:::::", data);
-  return data.items;
+export const fetchProducts = async (): Promise<ProductsSchema> => {
+    const {data} = await getAxiosInstance().get<ProductsSchema>("products");
+    return data
 };
 
-export const fetchProductById = async (req: ProductSchemaRequest) => {
-  const { data } = await getAxiosInstance().get(`products/${req.id}`);
-  return data.items;
-};
+// export const fetchProductById = async (req: ProductSchemaRequest) => {
+//   const { data } = await getAxiosInstance().get(`products/${req.id}`);
+//   return <ProductSchema[]>data;
+// };

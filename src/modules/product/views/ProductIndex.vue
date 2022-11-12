@@ -11,4 +11,5 @@ Nullam cursus lacinia erat. "
 
 <script lang="ts" setup>
 import CardShow from "@/components/cards/CardShow.vue";
+
 </script>

@@ -18,8 +18,8 @@ import { useProgress } from "@/lib/ui/hooks/progress";
 import { defineComponent, onBeforeMount, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useSleep } from "./lib/ui/hooks/sleep";
-import Header from "@/components/layouts/Header.vue";
-import Footer from "@/components/layouts/Footer.vue";
+import Header from "@/components/layouts/TheHeader.vue";
+import Footer from "@/components/layouts/TheFooter.vue";
 
 const progress = useProgress();
 const router = useRouter();
