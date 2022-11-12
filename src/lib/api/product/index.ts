@@ -7,7 +7,7 @@ export const fetchProducts = async (): Promise<ProductsSchema> => {
     return data
 };
 
-// export const fetchProductById = async (req: ProductSchemaRequest) => {
-//   const { data } = await getAxiosInstance().get(`products/${req.id}`);
-//   return <ProductSchema[]>data;
-// };
+export const fetchProductById = async (productId: number): Promise<ProductSchema> => {
+  const { data } = await getAxiosInstance().get<ProductSchema>(`products/${productId}`);
+  return data
+};

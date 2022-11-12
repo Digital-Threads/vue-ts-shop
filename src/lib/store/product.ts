@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {fetchProducts} from "../api/product";
+import {fetchProductById, fetchProducts} from "../api/product";
 import {ProductSchema, ProductsSchema} from "../api/product/schemas";
 
 interface RootState {
@@ -18,14 +18,14 @@ export const useProductStore = defineStore("productStore", {
         selectedProduct: null,
         productsList: [],
         productsMeta: {
-            limit: 100 ,
-            offset: 0 ,
-            total: 0 ,
+            limit: 100,
+            offset: 0,
+            total: 0,
             count: 0
         }
     } as RootState),
     getters: {
-        getProductList: state=> state.productsList
+        getProductList: state => state.productsList
     },
     actions: {
         async fetchProducts(): Promise<void> {
@@ -37,7 +37,10 @@ export const useProductStore = defineStore("productStore", {
             this.productsMeta.offset = productsList.offset
             this.productsMeta.total = productsList.total
             this.productsMeta.count = productsList.count
-
         },
+
+        async fetchProductById(productId: number): Promise<ProductSchema> {
+            return await fetchProductById(productId)
+        }
     }
 });

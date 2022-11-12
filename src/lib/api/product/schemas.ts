@@ -1,9 +1,11 @@
 export interface ProductSchema {
     id: number;
-    categoryIds: Array<Number>
-    productName: String
-    thumbnailUrl: String
-    defaultDisplayedPriceFormatted: Number
+    categoryIds: Array<number>
+    productName: string
+    thumbnailUrl: string
+    defaultDisplayedPriceFormatted: number
+    description: string
+
 }
 
 export interface ProductsSchema {

@@ -1,5 +1,5 @@
 <template>
-  <card-show
+  <product-detail
     image="https://static.nike.com/a/images/c_limit,w_400,f_auto/t_product_v1/8f3cda35-d270-4508-8d18-bf51377f5768/image.jpg"
     productName="Product 1"
     price="$125"
@@ -10,6 +10,19 @@ Nullam cursus lacinia erat. "
 </template>
 
 <script lang="ts" setup>
-import CardShow from "@/components/cards/CardShow.vue";
+import ProductDetail from "../components/ProductDetail.vue";
+import {useRoute, useRouter} from "vue-router";
+import {onBeforeMount, ref} from "vue";
+import {ProductSchema} from "../../../lib/api/product/schemas";
+import {useProductStore} from "../../../lib/store/product";
 
+const productStore = useProductStore()
+
+const route = useRoute()
+const product = ref<ProductSchema | null>(null)
+onBeforeMount(async ()=>{
+  product.value = await productStore.fetchProductById(+route.params.id)
+
+
+})
 </script>
