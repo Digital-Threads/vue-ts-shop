@@ -31,16 +31,26 @@ export const useShopStore = defineStore("shopStore", {
         getShopItemsCount: state => state.totalCount,
     },
     actions: {
-        addItemToShop(shopItem: ProductSchema, count = 1): void {
-            shopStorage.value.items[shopItem.id] = {item: shopItem, itemsCount: count}
-            shopStorage.value.totalCount += count
-            this.basketItems[shopItem.id] = {item: shopItem, itemsCount: count}
-            this.totalCount += count
+        addItemToShop(shopItem: { item: ProductSchema, itemsCount: number }): void {
+            if (shopStorage.value.items[shopItem.item.id]) {
+                shopStorage.value.items[shopItem.item.id].itemsCount += shopItem.itemsCount
+            } else {
+                shopStorage.value.items[shopItem.item.id] = shopItem
+            }
+
+            shopStorage.value.totalCount += shopItem.itemsCount
+
+            this.basketItems = shopStorage.value.items
+            this.totalCount = shopStorage.value.totalCount
         },
         removeItemFromShop(itemId: number): void {
             const count = shopStorage.value.items[itemId].itemsCount
+            console.log(shopStorage.value.items[itemId])
             delete shopStorage.value.items[itemId]
             shopStorage.value.totalCount -= count
+
+            this.basketItems = shopStorage.value.items
+            this.totalCount = shopStorage.value.totalCount
             // shopStorage.value.itemsCount--
         },
 

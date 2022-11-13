@@ -70,7 +70,7 @@ const minus = () => {
   counter.value = counter.value - 1;
 }
 const addToBasket = () => {
-  addItemToShop(props.product, counter.value)
+  addItemToShop({item: props.product, itemsCount:counter.value})
 }
 
 </script>

@@ -72,7 +72,7 @@
                   d="M7.5 10.5V11.25C7.5 12.4435 7.97411 13.5881 8.81802 14.432C9.66193 15.2759 10.8065 15.75 12 15.75C13.1935 15.75 14.3381 15.2759 15.182 14.432C16.0259 13.5881 16.5 12.4435 16.5 11.25V10.5"
                   stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
             </svg>
-            <sup class="absolute -right-1 top-2 bg-amber-300  text-red-600 font-bold ">{{ shopStore.getShopItemsCount }}</sup>
+            <sup class="absolute rounded-full p-2 px-0.5 bottom-0 -right-2  flex items-center justify-center bg-red text-white top-2 bg-amber-300 text-red-600 font-bold ">{{ shopStore.getShopItemsCount }}</sup>
           </a>
           <button aria-label="open menu" class="text-gray-800 dark:text-white md:hidden focus:outline-none focus:ring-2 focus:ring-gray-800 rounded hover:bg-gray-100 p-0.5" @click="menusm=true">
             <svg class="fill-stroke" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

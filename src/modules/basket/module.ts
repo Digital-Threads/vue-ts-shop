@@ -7,7 +7,7 @@ const basket: Module = {
       component: () => import("@/modules/basket/views/Basket.vue"),
       children: [
         {
-          name: "basket",
+          name: "/",
           path: "",
           component: () =>
             import("@/modules/basket/views/BasketIndex.vue"),
