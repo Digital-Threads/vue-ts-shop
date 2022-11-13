@@ -26,8 +26,8 @@
         </div>
 
         <button
-            @click="addToBasket"
-            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100">
+            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+            @click="removeFromBasket">
           Add to shopping bag
         </button>
       </div>
@@ -52,10 +52,10 @@
 <script lang="ts" setup>
 
 import {ref} from "vue";
-import {useLocalStorage} from '@vueuse/core'
 import {ProductSchema} from "../../../../lib/api/product/schemas";
+import {useShopStore} from "../../../../lib/store/shop";
 
-const shopStorage = useLocalStorage('shop', {items: <ProductSchema[]> []})
+const shopStore = useShopStore();
 
 const props = defineProps<{
   productCover: string;
@@ -63,8 +63,10 @@ const props = defineProps<{
   productName: string;
   productPrice: string;
   productDescription: string;
-  product:ProductSchema
+  product: ProductSchema
 }>();
+const addItemToShop = shopStore.addItemToShop
+const removeItemFromShop = shopStore.removeItemFromShop
 
 let counter = ref(1);
 const plus = () => {
@@ -74,7 +76,8 @@ const plus = () => {
 const minus = () => {
   counter.value = counter.value - 1;
 }
-const addToBasket = async () => {
-  shopStorage.value.items.push(props.product)
+const addToBasket = () => {
+  addItemToShop(props.product)
 }
+
 </script>
