@@ -1,16 +1,24 @@
 <template>
-  <product-detail
-    image="https://static.nike.com/a/images/c_limit,w_400,f_auto/t_product_v1/8f3cda35-d270-4508-8d18-bf51377f5768/image.jpg"
-    productName="Product 1"
-    price="$125"
-    description="Vestibulum suscipit nulla quis orci. Vivamus aliquet elit ac nisl. Proin magna. Phasellus accumsan cursus velit. Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis venenatis ante odio sit amet eros.
-Ut a nisl id ante tempus hendrerit. Nullam dictum felis eu pede mollis pretium. Sed a libero. Nunc nulla. Quisque rutrum.
-Nullam cursus lacinia erat. "
-  />
+  <Suspense>
+    <product-detail
+        v-if="product"
+        :product-cover="product.imageUrl"
+        :product-description="product.description"
+        :product-images="product.galleryImages"
+        :product-name="product.name"
+        :product-price="product.defaultDisplayedPriceFormatted"
+        :product="product"
+    ></product-detail>
+    <template #fallback>
+      Loading
+    </template>
+  </Suspense>
+
+
 </template>
 
 <script lang="ts" setup>
-import ProductDetail from "../components/ProductDetail.vue";
+import ProductDetail from "../components/product/ProductDetail.vue";
 import {useRoute, useRouter} from "vue-router";
 import {onBeforeMount, ref} from "vue";
 import {ProductSchema} from "../../../lib/api/product/schemas";
@@ -20,8 +28,9 @@ const productStore = useProductStore()
 
 const route = useRoute()
 const product = ref<ProductSchema | null>(null)
-onBeforeMount(async ()=>{
+onBeforeMount(async () => {
   product.value = await productStore.fetchProductById(+route.params.id)
+  console.log('Product ::::', product.value)
 
 
 })
