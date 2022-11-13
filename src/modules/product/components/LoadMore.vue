@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="h-[200px] w-[200px] cursor-pointer bg-black bg-opacity-70 m-10 text-white text-2xl flex items-center justify-center hover:bg-opacity-100 duration-300"
-  >
-    Load more
+  <div class="flex justify-center items-center">
+    <button class="hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 bg-gray-800 py-5 md:px-16 md:w-auto w-full lg:mt-28 md:mt-12 mt-10 text-white font-medium text-base leading-4">Load More</button>
   </div>
 </template>
 

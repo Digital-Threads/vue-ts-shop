@@ -3,7 +3,7 @@ export interface ProductSchema {
     categoryIds: Array<number>
     productName: string
     thumbnailUrl: string
-    defaultDisplayedPriceFormatted: number
+    defaultDisplayedPriceFormatted: string
     description: string
 
 }
