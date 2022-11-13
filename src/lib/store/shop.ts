@@ -3,29 +3,45 @@ import {fetchProductById, fetchProducts} from "../api/product";
 import {ProductSchema, ProductsSchema} from "../api/product/schemas";
 import {useLocalStorage} from '@vueuse/core'
 
-const shopStorage = useLocalStorage('shop', {items: <ProductSchema[]>[]})
+interface shopItemsType {
+    item: ProductSchema;
+    itemsCount: number
+}
+
+interface shopType {
+    totalCount: number
+
+    [key: number]: shopItemsType;
+}
+
+const shopStorage = useLocalStorage('shop', {items: {} as shopType, totalCount: 0 as number})
 
 interface RootState {
-    basketItems: Array<ProductSchema>,
+    basketItems: shopType,
+    totalCount: number
 }
 
 export const useShopStore = defineStore("shopStore", {
     state: () => ({
         basketItems: shopStorage.value.items,
+        totalCount: shopStorage.value.totalCount
     } as RootState),
     getters: {
         getShopItems: state => state.basketItems,
-        getShopItemsCount: state => state.basketItems.length,
+        getShopItemsCount: state => state.totalCount,
     },
     actions: {
-        addItemToShop(item: ProductSchema): void {
-            shopStorage.value.items.push(item)
+        addItemToShop(shopItem: ProductSchema, count = 1): void {
+            shopStorage.value.items[shopItem.id] = {item: shopItem, itemsCount: count}
+            shopStorage.value.totalCount += count
+            this.basketItems[shopItem.id] = {item: shopItem, itemsCount: count}
+            this.totalCount += count
         },
         removeItemFromShop(itemId: number): void {
-            let index = shopStorage.value.items.findIndex(item => item.id === itemId)
-            if (index !== -1) {
-                shopStorage.value.items.splice(index, 1)
-            }
+            const count = shopStorage.value.items[itemId].itemsCount
+            delete shopStorage.value.items[itemId]
+            shopStorage.value.totalCount -= count
+            // shopStorage.value.itemsCount--
         },
 
     }
