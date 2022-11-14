@@ -10,28 +10,25 @@
         :product="product"
     ></product-detail>
     <template #fallback>
-      Loading
+      <loader></loader>
     </template>
   </Suspense>
-
-
 </template>
 
 <script lang="ts" setup>
 import ProductDetail from "../components/product/ProductDetail.vue";
-import {useRoute, useRouter} from "vue-router";
+import {useRoute} from "vue-router";
 import {onBeforeMount, ref} from "vue";
 import {ProductSchema} from "../../../lib/api/product/schemas";
 import {useProductStore} from "../../../lib/store/product";
+import Loader from "../../../components/elements/Loader.vue";
 
 const productStore = useProductStore()
 
 const route = useRoute()
 const product = ref<ProductSchema | null>(null)
+
 onBeforeMount(async () => {
   product.value = await productStore.fetchProductById(+route.params.id)
-  console.log('Product ::::', product.value)
-
-
 })
 </script>

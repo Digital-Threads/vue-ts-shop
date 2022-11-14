@@ -5,6 +5,7 @@ export interface ProductSchema {
     thumbnailUrl: string
     defaultDisplayedPriceFormatted: string
     description: string
+    price: number
 
 }
 

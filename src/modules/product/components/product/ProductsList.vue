@@ -13,20 +13,29 @@
             :productImage="product.thumbnailUrl"
             :productName="product.name"
             :productPrice="product.defaultDisplayedPriceFormatted"
+            :product="product"
+            @addItemToShop="addToBasket"
         />
       </div>
-      <LoadMore/>
+      <load-more/>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 
 import ProductCard from "./ProductCard.vue";
+import LoadMore from "../LoadMore.vue";
+import {useShopStore} from "../../../../lib/store/shop";
+import {ProductSchema} from "../../../../lib/api/product/schemas";
+const  addItemToShop = useShopStore().addItemToShop
 
 interface Props {
-  products: [];
+  products: ProductSchema[];
 }
 
 const props = defineProps<Props>();
 
+const addToBasket = (product: ProductSchema) => {
+  addItemToShop({item: product, itemsCount:1})
+}
 </script>

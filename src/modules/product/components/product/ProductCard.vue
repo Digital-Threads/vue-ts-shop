@@ -5,9 +5,11 @@
         <div class="flex justify-center items-center opacity-0 bg-gradient-to-t from-gray-800 via-gray-800 to-opacity-30 group-hover:opacity-50 absolute top-0 left-0 h-full w-full"></div>
         <img :alt="productName" :src="productImage" class="w-full"/>
         <div class="absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
-          <button class="font-medium text-base leading-4 text-gray-800 bg-white py-3 w-full hover:border hover:bg-transparent hover:border-white hover:text-white">Add to bag</button>
-          <router-link :to="{name:'ProductDetail', params:{id:productId}}" type="button"
-                       class="bg-transparent font-medium text-base leading-4 border-2 border-white py-3 w-full mt-2 text-white hover:bg-white hover:text-black text-center"> Quick View
+          <button class="font-medium text-base leading-4 text-gray-800 bg-white py-3 w-full hover:border hover:bg-transparent hover:border-white hover:text-white" @click.prevent="addToBasket">Add to bag
+          </button>
+          <router-link :to="{name:'ProductDetail', params:{id:productId}}"
+                       class="bg-transparent font-medium text-base leading-4 border-2 border-white py-3 w-full mt-2 text-white hover:bg-white hover:text-black text-center"
+                       type="button"> Quick View
           </router-link>
         </div>
       </div>
@@ -23,14 +25,21 @@
 
 <script lang="ts" setup>
 
+import {ProductSchema} from "../../../../lib/api/product/schemas";
+
 interface Props {
   productImage: string;
   productId: number;
   productName: string
   productPrice: string,
+  product: ProductSchema,
 }
 
 const props = defineProps<Props>();
+const emit = defineEmits(['addItemToShop'])
 
-console.log("PROPS::::::", props)
+const addToBasket = (): void => {
+  emit('addItemToShop', props.product)
+}
+
 </script>

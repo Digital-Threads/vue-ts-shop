@@ -6,6 +6,7 @@ import {useLocalStorage} from '@vueuse/core'
 interface shopItemsType {
     item: ProductSchema;
     itemsCount: number
+    itemsSum: number
 }
 
 interface shopType {
@@ -32,10 +33,13 @@ export const useShopStore = defineStore("shopStore", {
     },
     actions: {
         addItemToShop(shopItem: { item: ProductSchema, itemsCount: number }): void {
+            const itemsSum = shopItem.itemsCount * shopItem.item.price
             if (shopStorage.value.items[shopItem.item.id]) {
+
                 shopStorage.value.items[shopItem.item.id].itemsCount += shopItem.itemsCount
+                shopStorage.value.items[shopItem.item.id].itemsSum += itemsSum
             } else {
-                shopStorage.value.items[shopItem.item.id] = shopItem
+                shopStorage.value.items[shopItem.item.id] = {...shopItem, 'itemsSum': itemsSum}
             }
 
             shopStorage.value.totalCount += shopItem.itemsCount
@@ -45,7 +49,6 @@ export const useShopStore = defineStore("shopStore", {
         },
         removeItemFromShop(itemId: number): void {
             const count = shopStorage.value.items[itemId].itemsCount
-            console.log(shopStorage.value.items[itemId])
             delete shopStorage.value.items[itemId]
             shopStorage.value.totalCount -= count
 

@@ -17,7 +17,7 @@
         <div class="flex itemms-center">
           <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer" @click="removeItemFromShopCard(productId)">Remove</p>
         </div>
-        <p class="text-base font-black leading-none text-gray-800">$9,000</p>
+        <p class="text-base font-black leading-none text-gray-800">{{ productPrice  }} ₽</p>
       </div>
     </div>
   </div>

@@ -62,7 +62,7 @@
           </div>
         </div>
         <div class="lg:w-3/12 flex justify-end items-center space-x-4">
-          <a aria-label="Shopping bag" class="hidden md:block focus:outline-none text-gray-800 dark:text-white focus:ring-2 focus:ring-gray-800 rounded hover:bg-gray-100 p-0.5 relative"
+          <router-link to="/basket" aria-label="Shopping bag" class="hidden md:block focus:outline-none text-gray-800 dark:text-white focus:ring-2 focus:ring-gray-800 rounded hover:bg-gray-100 p-0.5 relative"
              href="javascript:void(0)">
             <svg class="fill-stroke" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -73,7 +73,7 @@
                   stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
             </svg>
             <sup class="absolute rounded-full p-2 px-0.5 bottom-0 -right-2  flex items-center justify-center bg-red text-white top-2 bg-amber-300 text-red-600 font-bold ">{{ shopStore.getShopItemsCount }}</sup>
-          </a>
+          </router-link>
           <button aria-label="open menu" class="text-gray-800 dark:text-white md:hidden focus:outline-none focus:ring-2 focus:ring-gray-800 rounded hover:bg-gray-100 p-0.5" @click="menusm=true">
             <svg class="fill-stroke" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 6H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>

@@ -1,23 +1,24 @@
 <template>
   <router-view v-slot="{ Component }">
     <div class="h-screen flex flex-col justify-between ">
-      <Header />
+      <Header/>
 
       <transition name="fade">
         <div v-if="bootstrapped" class="w-full h-full overflow-y-auto ">
-          <component :is="Component" />
+          <component :is="Component"/>
         </div>
       </transition>
-      <Footer />
+      <Footer/>
     </div>
+
   </router-view>
 </template>
 
 <script lang="ts" setup>
-import { useProgress } from "@/lib/ui/hooks/progress";
-import { defineComponent, onBeforeMount, ref } from "vue";
-import { useRouter } from "vue-router";
-import { useSleep } from "./lib/ui/hooks/sleep";
+import {useProgress} from "./lib/ui/hooks/progress";
+import {defineComponent, onBeforeMount, ref} from "vue";
+import {useRouter} from "vue-router";
+import {useSleep} from "./lib/ui/hooks/sleep";
 import Header from "@/components/layouts/TheHeader.vue";
 import Footer from "@/components/layouts/TheFooter.vue";
 
