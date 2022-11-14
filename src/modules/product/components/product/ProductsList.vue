@@ -9,11 +9,11 @@
         <product-card
             v-for="product in products"
             :key="product.id"
+            :product="product"
             :productId="product.id"
             :productImage="product.thumbnailUrl"
             :productName="product.name"
             :productPrice="product.defaultDisplayedPriceFormatted"
-            :product="product"
             @addItemToShop="addToBasket"
         />
       </div>
@@ -21,13 +21,14 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import ProductCard from "./ProductCard.vue";
 import LoadMore from "../LoadMore.vue";
 import {useShopStore} from "../../../../lib/store/shop";
 import {ProductSchema} from "../../../../lib/api/product/schemas";
-const  addItemToShop = useShopStore().addItemToShop
+
+const addItemToShop = useShopStore().addItemToShop
 
 interface Props {
   products: ProductSchema[];
@@ -36,6 +37,6 @@ interface Props {
 const props = defineProps<Props>();
 
 const addToBasket = (product: ProductSchema) => {
-  addItemToShop({item: product, itemsCount:1})
+  addItemToShop({item: product, itemsCount: 1})
 }
 </script>

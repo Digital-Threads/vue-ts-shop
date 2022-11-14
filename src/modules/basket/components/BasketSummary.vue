@@ -10,7 +10,7 @@
           <p class="text-2xl font-bold leading-normal text-right text-gray-800">{{ shopTotalPrice }} ₽</p>
         </div>
         <button class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white"
-                onclick="checkout">Checkout
+                @click="checkout">Checkout
         </button>
       </div>
     </div>
@@ -18,9 +18,6 @@
 </template>
 
 <script lang="ts" setup>
-
-import {ProductSchema} from "../../../lib/api/product/schemas";
-import BasketItemCard from "./BasketItemCard.vue";
 
 const props = defineProps<{
   shopTotalPrice: number
@@ -33,7 +30,7 @@ const removeShopItem = (productId: number): void => {
 }
 
 const checkout = (): void => {
-
+  alert('You have successfully checked out ;) ')
 }
 </script>
 

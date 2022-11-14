@@ -59,7 +59,6 @@ const props = defineProps<{
   product: ProductSchema
 }>();
 const addItemToShop = shopStore.addItemToShop
-const removeItemFromShop = shopStore.removeItemFromShop
 
 let counter = ref(1);
 const plus = () => {
@@ -70,7 +69,7 @@ const minus = () => {
   counter.value = counter.value - 1;
 }
 const addToBasket = () => {
-  addItemToShop({item: props.product, itemsCount:counter.value})
+  addItemToShop({item: props.product, itemsCount: counter.value})
 }
 
 </script>

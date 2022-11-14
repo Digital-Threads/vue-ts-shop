@@ -6,8 +6,6 @@
 <script lang="ts" setup>
 
 import {onBeforeMount} from "vue";
-import ProductCard from "../components/product/ProductCard.vue";
-import LoadMore from "../components/LoadMore.vue";
 import {useProductStore} from "../../../lib/store/product";
 import {useCategoryStore} from "../../../lib/store/category";
 import CategoriesList from "../components/category/CategoriesList.vue";
