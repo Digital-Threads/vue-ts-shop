@@ -1,10 +1,8 @@
 import {defineStore} from "pinia";
 import {fetchCategories} from "../api/category";
-import {ProductSchema} from "../api/product/schemas";
 import {CategorySchema} from "../api/category/schemas";
 
 interface RootState {
-    selectedCategory: CategorySchema | null,
     categoriesList: Array<CategorySchema>,
     categoriesMeta: {
         limit: number,
@@ -16,7 +14,6 @@ interface RootState {
 
 export const useCategoryStore = defineStore("categoryStore", {
     state: () => ({
-        selectedCategory: null,
         categoriesList: [],
         categoriesMeta: {
             limit: 100,

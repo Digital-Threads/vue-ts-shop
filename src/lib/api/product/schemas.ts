@@ -1,12 +1,11 @@
 export interface ProductSchema {
-    id: number;
+    id: number
     categoryIds: Array<number>
     productName: string
     thumbnailUrl: string
     defaultDisplayedPriceFormatted: string
     description: string
     price: number
-
 }
 
 export interface ProductsSchema {
