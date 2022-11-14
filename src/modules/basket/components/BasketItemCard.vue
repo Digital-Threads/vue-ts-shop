@@ -29,7 +29,7 @@ const props = defineProps<{
   productCover: string
   productName: string
   itemsCount: number
-  productPrice: string
+  productPrice: number
   productId:number
 }>()
 
